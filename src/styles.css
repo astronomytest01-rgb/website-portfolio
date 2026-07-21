@@ -1846,7 +1846,7 @@ h3 {
   }
 
   .profile-card {
-    min-height: 27.2500rem;
+    min-height: auto;
   }
 
   .tax-upload-panel h4,
