@@ -43,7 +43,7 @@ const socialLabels: Record<string, string> = {
 };
 
 const titleLead = "Senior Product Designer bringing clarity to complex problems with";
-const titleRotatingWords = ["system thinking", "product logic", "visual systems", "clean handoff"];
+const titleRotatingWords = ["system thinking", "user research", "design systems", "data-driven design"];
 
 function CopyIcon() {
   return (
@@ -220,7 +220,7 @@ function Sidebar({
 
       <section className="card contact-card" id="contacts">
         <h3 className="sidebar-title">Have a project in mind?</h3>
-        <p>Let's talk</p>
+        <p>Let's discuss your project</p>
         <button className="contact-email" type="button" onClick={onCopyEmail}>
           <span className="link-label">{profile.email}</span>
         </button>
