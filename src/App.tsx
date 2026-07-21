@@ -220,7 +220,7 @@ function Sidebar({
 
       <section className="card contact-card" id="contacts">
         <h3 className="sidebar-title">Have a project in mind?</h3>
-        <p>Book a call today</p>
+        <p>Let's talk</p>
         <button className="contact-email" type="button" onClick={onCopyEmail}>
           <span className="link-label">{profile.email}</span>
         </button>
@@ -248,13 +248,13 @@ function Hero({ onCopyEmail }: { onCopyEmail: () => void }) {
           <a className="button button-dark" href="https://t.me/anton_reva" target="_blank" rel="noreferrer">
             <span className="btn-text-wrap">
               <span className="btn-text"><svg className="button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.787l3.019-14.228c.309-1.239-.473-1.8-1.282-1.432z"/></svg>Message me</span>
-              <span className="btn-text btn-text-clone"><svg className="button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.787l3.019-14.228c.309-1.239-.473-1.8-1.282-1.432z"/></svg>Message me</span>
+              <span className="btn-text btn-text-clone" aria-hidden="true"><svg className="button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.787l3.019-14.228c.309-1.239-.473-1.8-1.282-1.432z"/></svg>Message me</span>
             </span>
           </a>
           <a className="button button-light" href={cvUrl} target="_blank" rel="noreferrer">
             <span className="btn-text-wrap">
               <span className="btn-text"><Download className="button-cv-icon" aria-hidden="true" />{hero.secondaryAction}</span>
-              <span className="btn-text btn-text-clone"><Download className="button-cv-icon" aria-hidden="true" />{hero.secondaryAction}</span>
+              <span className="btn-text btn-text-clone" aria-hidden="true"><Download className="button-cv-icon" aria-hidden="true" />{hero.secondaryAction}</span>
             </span>
           </a>
         </div>

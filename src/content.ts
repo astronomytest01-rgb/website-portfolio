@@ -42,7 +42,7 @@ export const taxIntakeCase = {
   meta: "2026 · FinTech · TaxDome",
   title: "Tax Intake Workflow: AI-Powered",
   description:
-    "After the beta launch, firms reported a noticeable drop in follow-up messages — the status of every document became clear without additional questions.",
+    "After the beta launch, firms reported a noticeable drop in follow-up messages. The status of every document became clear without additional questions.",
   outcomes: ["44.5% Activation in Beta", "3x Faster Document Collection"],
   action: "Read case study",
   href: "https://uxreva.super.site/portfolio/tax-intake-workflow-ai-powered-checklists-with-445-activation-in-beta-3x-faster-document-collection",
