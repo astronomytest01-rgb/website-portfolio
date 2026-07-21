@@ -43,7 +43,7 @@ const socialLabels: Record<string, string> = {
 };
 
 const titleLead = "Senior Product Designer bringing clarity to complex problems with";
-const titleRotatingWords = ["system thinking", "user research", "design systems", "data-driven design"];
+const titleRotatingWords = ["system thinking", "user research", "design systems", "data-driven design", "AI-driven design"];
 
 function CopyIcon() {
   return (
