@@ -424,7 +424,7 @@ h3 {
   background: transparent;
   color: var(--text-soft);
   font-family: "Montserrat", Arial, sans-serif;
-  font-size: 1.0000rem;
+  font-size: 1.2500rem;
   font-weight: 500;
   line-height: 100%;
   letter-spacing: -0.0125rem;
@@ -490,7 +490,7 @@ h3 {
 
 .contact-card h3 {
   color: var(--text);
-  font-size: 1.0000rem;
+  font-size: 1.2500rem;
 }
 
 :root[data-theme="light"] .contact-card .sidebar-title {
@@ -536,7 +536,7 @@ h3 {
 
 .hero-card {
   position: relative;
-  height: 27.2500rem;
+  height: 25.2500rem;
   overflow: hidden;
   padding: 3.5000rem var(--section-inset);
 }
@@ -1846,7 +1846,7 @@ h3 {
   }
 
   .profile-card {
-    height: 27.2500rem;
+    min-height: 27.2500rem;
   }
 
   .tax-upload-panel h4,
