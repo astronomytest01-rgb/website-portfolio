@@ -219,8 +219,8 @@ function Sidebar({
       </section>
 
       <section className="card contact-card" id="contacts">
-        <h3 className="sidebar-title">Let's work together</h3>
-        <p>Open for new projects</p>
+        <h3 className="sidebar-title">Have a project in mind?</h3>
+        <p>Let's discuss your project</p>
         <button className="contact-email" type="button" onClick={onCopyEmail}>
           <span className="link-label">{profile.email}</span>
         </button>
