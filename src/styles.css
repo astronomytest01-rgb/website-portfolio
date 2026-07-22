@@ -215,7 +215,7 @@ h3 {
   background: var(--surface);
   border: none;
   border-radius: 0.8750rem;
-  box-shadow: var(--card-shadow), inset 0 0.75rem 1.5rem -0.75rem var(--card-glass-top), inset 0 -0.75rem 1.5rem -0.75rem var(--card-glass-bottom), inset 0.75rem 0 1.5rem -0.75rem var(--card-glass-side), inset -0.75rem 0 1.5rem -0.75rem var(--card-glass-side);
+  box-shadow: var(--card-shadow);
   transition: background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
@@ -254,10 +254,8 @@ h3 {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  transform: rotate(var(--avatar-rotation));
-  transform-origin: 50% 50%;
-  will-change: transform;
+  object-fit: cover;
+  border-radius: 1.25rem;
 }
 
 .sidebar-title {
@@ -725,19 +723,17 @@ h3 {
 
 .button-light {
   font-weight: 600;
-  color: var(--btn-light-text, var(--text));
-  background: transparent;
-  border: 2.5px solid transparent;
-  background-image: linear-gradient(var(--surface), var(--surface)), conic-gradient(from var(--border-angle), #6a9bd4, #7ab8c4, #88d0b0, #7ab8c4, #6a9bd4);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
+  color: var(--text);
+  background: var(--muted-surface);
+  border: 1px solid var(--stroke);
   outline: none;
-  box-shadow: 0 0 1.5rem rgba(106, 155, 212, 0.25), 0 0 3rem rgba(136, 208, 176, 0.15);
-  animation: border-rotate 4s linear infinite;
+  box-shadow: none;
 }
 
-:root[data-theme="dark"] .button-light {
-  border-width: 2px;
+:root[data-theme="light"] .button-light {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: var(--heading);
 }
 
 @keyframes border-rotate {
@@ -778,7 +774,7 @@ h3 {
 }
 
 .button-light:hover {
-  box-shadow: 0 0 2rem rgba(106, 155, 212, 0.35), 0 0 4rem rgba(136, 208, 176, 0.2);
+  box-shadow: none;
 }
 
 .social-stack {
