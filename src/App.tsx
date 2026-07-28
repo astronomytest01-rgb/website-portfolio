@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { ArrowUpRight, Download } from "lucide-react";
-import { filterCase, hero, otherProjects, profile, taxIntakeCase } from "./content";
+import { courses, experience, filterCase, footerContacts, footerLinks, hero, otherProjects, profile, stack, taxIntakeCase } from "./content";
 
 const avatarImage = new URL("./assets/avatar-anton.png", import.meta.url).href;
 const taxIntakeBg = new URL("./assets/tax-intake-card-bg.jpg", import.meta.url).href;
@@ -17,6 +17,29 @@ const otherProjectImages: Record<string, string> = {
   "Halyk Invest": new URL("./assets/project-halyk-invest.png", import.meta.url).href,
   RikkyHype: new URL("./assets/project-rikkyhype.png", import.meta.url).href,
   Dovody: new URL("./assets/project-dovody.png", import.meta.url).href,
+};
+const companyLogos: Record<string, string> = {
+  taxdome: new URL("./assets/company-taxdome.png", import.meta.url).href,
+  tieto: new URL("./assets/company-tieto.png", import.meta.url).href,
+  pulse: new URL("./assets/company-pulse.png", import.meta.url).href,
+};
+const courseLogos: Record<string, string> = {
+  projector: new URL("./assets/course-projector.png", import.meta.url).href,
+  serviceso: new URL("./assets/course-serviceso.png", import.meta.url).href,
+  bbe: new URL("./assets/course-bbe.png", import.meta.url).href,
+};
+const toolLogos: Record<string, string> = {
+  figma: new URL("./assets/tool-figma.png", import.meta.url).href,
+  claude: new URL("./assets/tool-framer.png", import.meta.url).href,
+  webflow: new URL("./assets/tool-webflow.png", import.meta.url).href,
+  rive: new URL("./assets/tool-rive.png", import.meta.url).href,
+  cursor: new URL("./assets/tool-cursor.jpeg", import.meta.url).href,
+  openai: new URL("./assets/tool-openai.png", import.meta.url).href,
+  notion: new URL("./assets/tool-notion.webp", import.meta.url).href,
+  slack: new URL("./assets/tool-slack.svg", import.meta.url).href,
+  replit: new URL("./assets/tool-replit.png", import.meta.url).href,
+  jira: new URL("./assets/tool-jira.png", import.meta.url).href,
+  confluence: new URL("./assets/tool-confluence.png", import.meta.url).href,
 };
 const cvUrl = "/Anton_Reva_CV.pdf";
 
@@ -547,6 +570,170 @@ function OtherProjects() {
   );
 }
 
+
+function AboutSection({ onCopyEmail }: { onCopyEmail: () => void }) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isRevealed, setIsRevealed] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reducedMotion.matches) {
+      setIsRevealed(true);
+      return;
+    }
+
+    let lastY = window.scrollY;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const currentY = window.scrollY;
+        const down = currentY >= lastY;
+        if (entry.isIntersecting && down) setIsRevealed(true);
+        else if (!entry.isIntersecting && entry.boundingClientRect.top > 0) setIsRevealed(false);
+        lastY = currentY;
+      },
+      { threshold: 0.05, rootMargin: "0px 0px -8%" },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section className={`card about-section${isRevealed ? " is-revealed" : ""}`} id="experience" ref={sectionRef}>
+      <header className="about-header">
+        <p className="section-kicker">Experience</p>
+        <h2>Work history</h2>
+      </header>
+      <div className="experience-list">
+        {experience.map((job, jobIndex) => (
+          <div className="experience-card" key={job.company} style={{ transitionDelay: `${jobIndex * 120}ms` }}>
+            <div className="experience-logo">
+              <img src={companyLogos[job.logo]} alt={job.company} />
+            </div>
+            <div className="experience-content">
+              {job.roles.map((role, i) => (
+                <div className="experience-role" key={i}>
+                  {job.roles.length > 1 && (
+                    <div className="experience-timeline">
+                      <span className={`experience-dot${i === 0 ? " experience-dot-filled" : ""}`} />
+                      {i < job.roles.length - 1 && <span className="experience-line" />}
+                    </div>
+                  )}
+                  <div className="experience-role-content">
+                    <p className="experience-company">{job.company}{(role as any).cluster && ` | ${(role as any).cluster}`}</p>
+                    <h3 className="experience-title">{role.title}</h3>
+                    <p className="experience-description">{role.description}</p>
+                    <p className="experience-meta">
+                      <span className="experience-period">{role.period}</span>
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p className="section-kicker about-kicker">Stack</p>
+      <div className="stack-grid">
+        {stack.map((tool) => (
+          <div className="stack-badge" key={tool.name}>
+            <span className="stack-icon" style={{ background: tool.color }} data-logo={tool.logo}>
+              <img src={toolLogos[tool.logo]} alt="" aria-hidden="true" />
+            </span>
+            <span className="stack-name">{tool.name}</span>
+            {(tool as any).tip && <span className="stack-tooltip">{(tool as any).tip}</span>}
+          </div>
+        ))}
+      </div>
+
+      <p className="section-kicker about-kicker">Courses</p>
+      <div className="courses-list">
+        {courses.map((course) => (
+          <div className="course-row" key={course.name}>
+            <div className="course-logo">
+              <img src={courseLogos[course.logo]} alt={course.provider} />
+            </div>
+            <span className="course-name">{course.name}</span>
+            <span className="course-spacer" />
+            <span className="course-provider">{course.provider}</span>
+            <span className="course-year">{course.year}</span>
+          </div>
+        ))}
+      </div>
+      <SiteFooter onCopyEmail={onCopyEmail} />
+    </section>
+  );
+}
+
+function SiteFooter({ onCopyEmail }: { onCopyEmail: () => void }) {
+  return (
+    <footer className="site-footer">
+      <div className="footer-top">
+        <a className="button button-dark footer-cta" href="https://t.me/anton_reva" target="_blank" rel="noreferrer">
+          <span className="btn-text-wrap">
+            <span className="btn-text"><svg className="button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.787l3.019-14.228c.309-1.239-.473-1.8-1.282-1.432z"/></svg>Message me</span>
+            <span className="btn-text btn-text-clone" aria-hidden="true"><svg className="button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.787l3.019-14.228c.309-1.239-.473-1.8-1.282-1.432z"/></svg>Message me</span>
+          </span>
+        </a>
+        <button className="button button-light footer-cta" type="button" onClick={onCopyEmail}>
+          <span className="btn-text-wrap">
+            <span className="btn-text"><svg className="button-cv-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy email</span>
+            <span className="btn-text btn-text-clone" aria-hidden="true"><svg className="button-cv-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy email</span>
+          </span>
+        </button>
+      </div>
+      <div className="footer-bottom">
+        <div className="footer-spotify">
+          <iframe
+            title="Spotify playlist"
+            src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0XUsuxWHRQd?utm_source=generator&theme=0"
+            width="100%"
+            height="80"
+            frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            style={{ borderRadius: "0.75rem" }}
+          />
+        </div>
+        <div className="footer-right-group">
+          <div className="footer-links-col">
+            <h4>Socials</h4>
+            {footerLinks.map((link) => (
+              <a href={link.href} key={link.label} target="_blank" rel="noreferrer" className="footer-social-link">
+                {link.label}
+              </a>
+            ))}
+          </div>
+          <div className="footer-col">
+            <h4>Local time</h4>
+            <p>🇺🇦 {new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })} GMT+3</p>
+          </div>
+          <div className="footer-col">
+            <h4>Contacts</h4>
+            {footerContacts.map((c) =>
+              c.href === "#copy-email" ? (
+                <button key={c.label} type="button" className="footer-social-link footer-copy-email" onClick={onCopyEmail}>
+                  {c.label}
+                </button>
+              ) : (
+                <a href={c.href} key={c.label} target="_blank" rel="noreferrer" className="footer-social-link">
+                  {c.label}
+                </a>
+              ),
+            )}
+          </div>
+        </div>
+      </div>
+      <hr className="footer-divider" />
+      <p className="footer-copyright">© {new Date().getFullYear()} Anton Reva. All rights reserved</p>
+    </footer>
+  );
+}
+
 const navItems = [
   { id: "home", label: "Home", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> },
   { id: "about", label: "About", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> },
@@ -623,42 +810,7 @@ export function App() {
   }, [theme]);
 
   useEffect(() => {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
-
-    const updateAvatarRotation = () => {
-      frame = 0;
-
-      if (reduceMotion.matches) {
-        document.documentElement.style.setProperty("--avatar-rotation", "0deg");
-        return;
-      }
-
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollProgress = maxScroll > 0 ? Math.min(Math.max(window.scrollY / maxScroll, 0), 1) : 0;
-
-      document.documentElement.style.setProperty("--avatar-rotation", `${scrollProgress * -360}deg`);
-    };
-
-    const queueAvatarRotationUpdate = () => {
-      if (frame) {
-        return;
-      }
-
-      frame = window.requestAnimationFrame(updateAvatarRotation);
-    };
-
-    updateAvatarRotation();
-    window.addEventListener("scroll", queueAvatarRotationUpdate, { passive: true });
-    window.addEventListener("resize", queueAvatarRotationUpdate);
-
-    return () => {
-      window.removeEventListener("scroll", queueAvatarRotationUpdate);
-      window.removeEventListener("resize", queueAvatarRotationUpdate);
-      if (frame) {
-        window.cancelAnimationFrame(frame);
-      }
-    };
+    document.documentElement.style.setProperty("--avatar-rotation", "0deg");
   }, []);
 
   useEffect(() => {
@@ -717,6 +869,7 @@ export function App() {
         <div className="main-column">
           <Hero onCopyEmail={copyEmail} />
           <TaxIntakeCaseStudy />
+          <AboutSection onCopyEmail={copyEmail} />
         </div>
       </main>
       <div className={`copy-toast${showToast ? " is-visible" : ""}`} aria-live="polite" aria-atomic="true">
