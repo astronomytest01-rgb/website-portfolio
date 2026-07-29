@@ -679,18 +679,18 @@ function SiteFooter({ onCopyEmail }: { onCopyEmail: () => void }) {
             <span className="btn-text btn-text-clone" aria-hidden="true"><svg className="button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.787l3.019-14.228c.309-1.239-.473-1.8-1.282-1.432z"/></svg>Message me</span>
           </span>
         </a>
-        <button className="button button-light footer-cta" type="button" onClick={onCopyEmail}>
+        <a className="button button-light footer-cta" href={cvUrl} download="Anton_Reva_CV.pdf">
           <span className="btn-text-wrap">
-            <span className="btn-text"><svg className="button-cv-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy email</span>
-            <span className="btn-text btn-text-clone" aria-hidden="true"><svg className="button-cv-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy email</span>
+            <span className="btn-text"><Download className="button-cv-icon" aria-hidden="true" />{hero.secondaryAction}</span>
+            <span className="btn-text btn-text-clone" aria-hidden="true"><Download className="button-cv-icon" aria-hidden="true" />{hero.secondaryAction}</span>
           </span>
-        </button>
+        </a>
       </div>
       <div className="footer-bottom">
         <div className="footer-spotify">
           <iframe
             title="Spotify playlist"
-            src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0XUsuxWHRQd?utm_source=generator&theme=0"
+            src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0AMssoUKCz7?utm_source=generator&theme=0"
             width="100%"
             height="80"
             frameBorder="0"
@@ -737,8 +737,8 @@ function SiteFooter({ onCopyEmail }: { onCopyEmail: () => void }) {
 const navItems = [
   { id: "home", label: "Home", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> },
   { id: "about", label: "About", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> },
-  { id: "projects", label: "Case Studies", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> },
-  { id: "other-projects", label: "Projects", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> },
+  { id: "projects", label: "Case Studies", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/><line x1="14" x2="21" y1="4" y2="4"/><line x1="14" x2="21" y1="9" y2="9"/><line x1="14" x2="21" y1="15" y2="15"/><line x1="14" x2="21" y1="20" y2="20"/></svg> },
+  { id: "other-projects", label: "Projects", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg> },
 ];
 
 function BottomNav() {
