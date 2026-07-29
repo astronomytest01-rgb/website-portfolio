@@ -2269,7 +2269,7 @@ h3 {
 .bottom-nav {
   display: none;
   position: fixed;
-  bottom: 0.75rem;
+  bottom: calc(0.375rem + env(safe-area-inset-bottom));
   left: 1rem;
   right: 1rem;
   z-index: 100;
@@ -2282,7 +2282,6 @@ h3 {
   box-shadow: var(--bottom-nav-shadow);
   backdrop-filter: saturate(180%) blur(1.5rem);
   -webkit-backdrop-filter: saturate(180%) blur(1.5rem);
-  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .bottom-nav-item {
