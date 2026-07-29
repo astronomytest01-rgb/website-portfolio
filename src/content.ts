@@ -111,7 +111,7 @@ export const experience = [
 ];
 
 export const stack = [
-  { name: "Figma", logo: "figma", color: "#333333", tip: "UX/UI design & design systems" },
+  { name: "Figma", logo: "figma", color: "#333333", tip: "UX/UI & design system" },
   { name: "Claude", logo: "claude", color: "transparent", tip: "Interactive prototyping" },
   { name: "Notion", logo: "notion", color: "#ffffff", tip: "Documentation & specifications" },
   { name: "ChatGPT", logo: "gpt", color: "transparent", tip: "UX writing & research" },
@@ -119,7 +119,7 @@ export const stack = [
   { name: "After Effects", logo: "effects", color: "transparent", tip: "Micro-animations" },
   { name: "Cursor", logo: "cursor", color: "transparent", tip: "Web development" },
   { name: "Slack", logo: "slack", color: "#4A154B", tip: "Team communication" },
-  { name: "Replit", logo: "replit", color: "#F26522", tip: "Rapid prototyping & deploy" },
+  { name: "Replit", logo: "replit", color: "#F26522", tip: "Interactive prototyping" },
   { name: "Jira", logo: "jira", color: "#1868DB", tip: "Project management" },
   { name: "Confluence", logo: "confluence", color: "#1868DB", tip: "Team knowledge" },
 ];
