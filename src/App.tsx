@@ -29,17 +29,17 @@ const courseLogos: Record<string, string> = {
   bbe: new URL("./assets/course-bbe.png", import.meta.url).href,
 };
 const toolLogos: Record<string, string> = {
-  figma: new URL("./assets/tool-figma.png", import.meta.url).href,
-  claude: new URL("./assets/tool-framer.png", import.meta.url).href,
-  webflow: new URL("./assets/tool-webflow.png", import.meta.url).href,
-  rive: new URL("./assets/tool-rive.png", import.meta.url).href,
-  cursor: new URL("./assets/tool-cursor.jpeg", import.meta.url).href,
-  openai: new URL("./assets/tool-openai.png", import.meta.url).href,
-  notion: new URL("./assets/tool-notion.webp", import.meta.url).href,
-  slack: new URL("./assets/tool-slack.svg", import.meta.url).href,
-  replit: new URL("./assets/tool-replit.png", import.meta.url).href,
-  jira: new URL("./assets/tool-jira.png", import.meta.url).href,
-  confluence: new URL("./assets/tool-confluence.png", import.meta.url).href,
+  figma: new URL("./assets/figma.png", import.meta.url).href,
+  claude: new URL("./assets/claude.png", import.meta.url).href,
+  notion: new URL("./assets/notion.png", import.meta.url).href,
+  gpt: new URL("./assets/gpt.png", import.meta.url).href,
+  supernova: new URL("./assets/supernova.png", import.meta.url).href,
+  effects: new URL("./assets/effects.png", import.meta.url).href,
+  cursor: new URL("./assets/cursor.png", import.meta.url).href,
+  slack: new URL("./assets/slack.png", import.meta.url).href,
+  replit: new URL("./assets/replit.png", import.meta.url).href,
+  jira: new URL("./assets/jira.png", import.meta.url).href,
+  confluence: new URL("./assets/confluence.png", import.meta.url).href,
 };
 const cvUrl = "/Anton_Reva_CV.pdf";
 
