@@ -1897,24 +1897,6 @@ h3 {
   border-radius: inherit;
 }
 
-.stack-icon[data-logo="notion"] img {
-  object-fit: contain;
-  padding: 0.1875rem;
-}
-
-.stack-icon[data-logo="cursor"] img {
-  transform: scale(1.2);
-}
-
-.stack-icon[data-logo="webflow"] img {
-  transform: scale(1.1);
-}
-
-.stack-icon[data-logo="jira"] img,
-.stack-icon[data-logo="confluence"] img {
-  transform: scale(1.15);
-}
-
 .stack-name {
   font-size: 0.9375rem;
   font-weight: 500;

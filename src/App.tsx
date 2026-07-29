@@ -692,7 +692,7 @@ function SiteFooter({ onCopyEmail }: { onCopyEmail: () => void }) {
             title="Spotify playlist"
             src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0AMssoUKCz7?utm_source=generator&theme=0"
             width="100%"
-            height="80"
+            height="152"
             frameBorder="0"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
