@@ -2787,8 +2787,8 @@ h3 {
   .button-dark,
   .button-light {
     width: 100%;
-    height: 3.2500rem;
-    border-radius: 1.7500rem;
+    height: 3rem;
+    border-radius: 1.5rem;
     font-size: 1.0000rem;
     line-height: 1.5000rem;
   }
