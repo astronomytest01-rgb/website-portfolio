@@ -648,7 +648,7 @@ h3 {
   align-items: center;
   justify-content: center;
   height: 3.2500rem;
-  padding: 0 1.7500rem;
+  padding: 0 1.3750rem;
   border-radius: 1.7500rem;
   font-family: "Montserrat", Arial, sans-serif;
   font-size: 1.0625rem;
@@ -673,8 +673,8 @@ h3 {
 }
 
 .button-icon {
-  width: 1.5000rem;
-  height: 1.5000rem;
+  width: 1.25rem;
+  height: 1.25rem;
   flex: 0 0 auto;
 }
 
@@ -775,16 +775,16 @@ h3 {
 }
 
 .button-dark .btn-text {
-  gap: 0.6875rem;
+  gap: 0.5rem;
 }
 
 .button-light .btn-text {
-  gap: 0.7500rem;
+  gap: 0.5rem;
 }
 
 .button-cv-icon {
-  width: 1.2500rem;
-  height: 1.2500rem;
+  width: 1.25rem;
+  height: 1.25rem;
   flex: 0 0 auto;
   stroke-width: 1.8;
 }
@@ -1877,7 +1877,7 @@ h3 {
   transition: opacity 500ms ease, translate 500ms ease;
 }
 
-.about-section.is-revealed .stack-badge {
+.stack-grid.is-revealed .stack-badge {
   opacity: 1;
   translate: 0 0;
 }
@@ -1978,7 +1978,7 @@ h3 {
   transition: opacity 500ms ease, translate 500ms ease;
 }
 
-.about-section.is-revealed .course-row {
+.courses-list.is-revealed .course-row {
   opacity: 1;
   translate: 0 0;
 }
@@ -2082,14 +2082,32 @@ h3 {
 .footer-cta {
   min-width: 14rem;
   justify-content: center;
+  opacity: 0;
+  translate: 0 1rem;
+  transition: opacity 500ms ease, translate 500ms ease, filter 220ms ease, box-shadow 220ms ease, background 220ms ease, color 180ms ease, border-color 180ms ease;
 }
 
+.footer-cta:nth-child(1) { transition-delay: 0ms; }
+.footer-cta:nth-child(2) { transition-delay: 100ms; }
+
+.site-footer.is-revealed .footer-cta {
+  opacity: 1;
+  translate: 0 0;
+}
 
 .footer-bottom {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 0;
+  opacity: 0;
+  translate: 0 1rem;
+  transition: opacity 600ms ease 200ms, translate 600ms ease 200ms;
+}
+
+.site-footer.is-revealed .footer-bottom {
+  opacity: 1;
+  translate: 0 0;
 }
 
 .footer-spotify {

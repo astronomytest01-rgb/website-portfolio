@@ -571,35 +571,43 @@ function OtherProjects() {
 }
 
 
-function AboutSection({ onCopyEmail }: { onCopyEmail: () => void }) {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isRevealed, setIsRevealed] = useState(false);
+function useReveal(options?: IntersectionObserverInit) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (reducedMotion.matches) {
-      setIsRevealed(true);
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setRevealed(true);
       return;
     }
-
     let lastY = window.scrollY;
     const observer = new IntersectionObserver(
       ([entry]) => {
         const currentY = window.scrollY;
         const down = currentY >= lastY;
-        if (entry.isIntersecting && down) setIsRevealed(true);
-        else if (!entry.isIntersecting && entry.boundingClientRect.top > 0) setIsRevealed(false);
+        if (entry.isIntersecting && down) setRevealed(true);
+        else if (!entry.isIntersecting && entry.boundingClientRect.top > 0) setRevealed(false);
         lastY = currentY;
       },
-      { threshold: 0.05, rootMargin: "0px 0px -8%" },
+      { threshold: 0.1, rootMargin: "0px 0px -5%", ...options },
     );
-
-    observer.observe(section);
+    observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  return { ref, revealed };
+}
+
+function AboutSection({ onCopyEmail }: { onCopyEmail: () => void }) {
+  const section = useReveal({ threshold: 0.05, rootMargin: "0px 0px -8%" });
+  const stackBlock = useReveal();
+  const coursesBlock = useReveal();
+  const footerBlock = useReveal();
+
+  const sectionRef = section.ref;
+  const isRevealed = section.revealed;
 
   return (
     <section className={`card about-section${isRevealed ? " is-revealed" : ""}`} id="experience" ref={sectionRef}>
@@ -638,7 +646,7 @@ function AboutSection({ onCopyEmail }: { onCopyEmail: () => void }) {
       </div>
 
       <p className="section-kicker about-kicker">Stack</p>
-      <div className="stack-grid">
+      <div className={`stack-grid${stackBlock.revealed ? " is-revealed" : ""}`} ref={stackBlock.ref}>
         {stack.map((tool, i) => (
           <div className="stack-badge" key={tool.name} style={{ transitionDelay: `${i * 60}ms` }}>
             <span className="stack-icon" style={{ background: tool.color }} data-logo={tool.logo}>
@@ -651,9 +659,9 @@ function AboutSection({ onCopyEmail }: { onCopyEmail: () => void }) {
       </div>
 
       <p className="section-kicker about-kicker">Courses</p>
-      <div className="courses-list">
+      <div className={`courses-list${coursesBlock.revealed ? " is-revealed" : ""}`} ref={coursesBlock.ref}>
         {courses.map((course, i) => (
-          <div className="course-row" key={course.name} style={{ transitionDelay: `${(stack.length * 60) + i * 80}ms` }}>
+          <div className="course-row" key={course.name} style={{ transitionDelay: `${i * 80}ms` }}>
             <div className="course-logo">
               <img src={courseLogos[course.logo]} alt={course.provider} />
             </div>
@@ -664,14 +672,14 @@ function AboutSection({ onCopyEmail }: { onCopyEmail: () => void }) {
           </div>
         ))}
       </div>
-      <SiteFooter onCopyEmail={onCopyEmail} />
+      <SiteFooter onCopyEmail={onCopyEmail} revealRef={footerBlock.ref} isRevealed={footerBlock.revealed} />
     </section>
   );
 }
 
-function SiteFooter({ onCopyEmail }: { onCopyEmail: () => void }) {
+function SiteFooter({ onCopyEmail, revealRef, isRevealed }: { onCopyEmail: () => void; revealRef?: React.Ref<HTMLDivElement>; isRevealed?: boolean }) {
   return (
-    <footer className="site-footer">
+    <footer className={`site-footer${isRevealed ? " is-revealed" : ""}`} ref={revealRef}>
       <div className="footer-top">
         <a className="button button-dark footer-cta" href="https://t.me/anton_reva" target="_blank" rel="noreferrer">
           <span className="btn-text-wrap">
