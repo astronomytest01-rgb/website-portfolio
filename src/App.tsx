@@ -659,7 +659,7 @@ function AboutSection({ onCopyEmail }: { onCopyEmail: () => void }) {
             </div>
             <span className="course-name">{course.name}</span>
             <span className="course-spacer" />
-            <span className="course-provider">{course.provider}</span>
+            <a className="course-provider" href={(course as any).href} target="_blank" rel="noreferrer">{course.provider}</a>
             <span className="course-year">{course.year}</span>
           </div>
         ))}
@@ -692,7 +692,7 @@ function SiteFooter({ onCopyEmail }: { onCopyEmail: () => void }) {
             title="Spotify playlist"
             src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0AMssoUKCz7?utm_source=generator&theme=0"
             width="100%"
-            height="152"
+            height="80"
             frameBorder="0"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"

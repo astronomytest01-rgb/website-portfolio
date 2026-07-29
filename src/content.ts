@@ -125,10 +125,10 @@ export const stack = [
 ];
 
 export const courses = [
-  { name: "Product Analytics. Data Mining 2.0", provider: "Projector Institute", year: "2025", logo: "projector" },
-  { name: "Product Design Sprint", provider: "Service.so", year: "2024", logo: "serviceso" },
-  { name: "Product Design", provider: "Projector Institute", year: "2023", logo: "projector" },
-  { name: "Design Systems", provider: "BBE", year: "2023", logo: "bbe" },
+  { name: "Product Analytics. Data Mining 2.0", provider: "Projector Institute", year: "2025", logo: "projector", href: "https://prjctr.com/en" },
+  { name: "Product Design Sprint", provider: "Service.so", year: "2024", logo: "serviceso", href: "https://service.so/" },
+  { name: "Product Design", provider: "Projector Institute", year: "2023", logo: "projector", href: "https://prjctr.com/en" },
+  { name: "Design Systems", provider: "BBE", year: "2023", logo: "bbe", href: "https://bangbangeducation.ru/" },
 ];
 
 export const footerLinks = [
