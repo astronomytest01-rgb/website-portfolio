@@ -639,8 +639,8 @@ function AboutSection({ onCopyEmail }: { onCopyEmail: () => void }) {
 
       <p className="section-kicker about-kicker">Stack</p>
       <div className="stack-grid">
-        {stack.map((tool) => (
-          <div className="stack-badge" key={tool.name}>
+        {stack.map((tool, i) => (
+          <div className="stack-badge" key={tool.name} style={{ transitionDelay: `${i * 60}ms` }}>
             <span className="stack-icon" style={{ background: tool.color }} data-logo={tool.logo}>
               <img src={toolLogos[tool.logo]} alt="" aria-hidden="true" />
             </span>
@@ -652,8 +652,8 @@ function AboutSection({ onCopyEmail }: { onCopyEmail: () => void }) {
 
       <p className="section-kicker about-kicker">Courses</p>
       <div className="courses-list">
-        {courses.map((course) => (
-          <div className="course-row" key={course.name}>
+        {courses.map((course, i) => (
+          <div className="course-row" key={course.name} style={{ transitionDelay: `${(stack.length * 60) + i * 80}ms` }}>
             <div className="course-logo">
               <img src={courseLogos[course.logo]} alt={course.provider} />
             </div>
